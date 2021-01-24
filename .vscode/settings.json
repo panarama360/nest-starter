@@ -8,7 +8,6 @@
     ".gitignore": true,
     ".prettierrc": true,
     "nest-cli.json": true,
-    "yarn.lock": true,
-    "node_modules": true
+    "yarn.lock": true
   }
 }

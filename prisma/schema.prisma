@@ -10,15 +10,16 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// generator typegraphql {
-//  provider = "typegraphql-prisma-nestjs"
-//  output   = "../src/generated/type-graphql"
-// }
+generator typegraphql {
+ provider = "node node_modules/typegraphql-prisma/lib/generator.js"
+ output   = "../src/generated"
+}
 
 model User {
   id      Int      @default(autoincrement()) @id
   email   String   @unique
   name    String?
+  /// @TypeGraphQL.omit(output: true)
   password String
 
   createdAt   DateTime @default(now())
