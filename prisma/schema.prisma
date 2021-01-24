@@ -12,7 +12,7 @@ generator client {
 
 generator typegraphql {
  provider = "node node_modules/typegraphql-prisma/lib/generator.js"
- output   = "../src/generated"
+ output   = "../@generated"
 }
 
 model User {

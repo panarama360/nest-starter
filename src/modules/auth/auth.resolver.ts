@@ -3,9 +3,10 @@ import {AuthService} from "./auth.service";
 import {UseGuards} from "@nestjs/common";
 import {AuthGuard} from "../../guards/auth.guard";
 import { CurrentUser } from "src/functions/decorators";
-import { User } from "@prisma/client";
+import { User as UserPrisma } from "@prisma/client";
 import { UseRoles } from "nest-access-control";
 import { AcGuard } from "../../guards/ac.guard";
+import { User } from '../../models/User';
 
 @Resolver()
 export class AuthResolver{
@@ -23,20 +24,8 @@ export class AuthResolver{
     }
 
     @UseGuards(AuthGuard)
-    @Query(returns => String)
-    me(@CurrentUser() user: User){
+    @Query(returns => User)
+    me(@CurrentUser() user: UserPrisma){
         return user;
-    }
-
-
-    @UseGuards(AuthGuard, AcGuard)
-    @UseRoles({
-        resource: 'video',
-        action: "create",
-        possession: "own",
-      })
-    @Query(returns => String)
-    test() {
-        return 'hello';
     }
 }
