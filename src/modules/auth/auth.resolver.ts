@@ -18,10 +18,20 @@ export class AuthResolver{
         return this.authService.login(email, password);
     }
 
-    @Mutation(of => String)
+    @Mutation(of => Boolean)
     registration(@Args('email') email: string, @Args('pass') password: string){
         return this.authService.registration(email, password);
     }
+
+    @Mutation(of => String)
+    emailConfirmation(@Args('token') token: string){
+        return this.authService.emailConfirmation(token);
+    }
+
+    // @Mutation(of => String)
+    // repeatEmailConfirmation(@Args('token') email: string){
+    //     return this.authService.emailConfirmation(token);
+    // }
 
     @UseGuards(AuthGuard)
     @Query(returns => User)

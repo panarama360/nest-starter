@@ -6,6 +6,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { PrismaModule } from './modules/prisma/prisma.module';
 import { PrismaService } from './modules/prisma/prisma.service';
 import { roles } from './modules/role/roles';
+import { EmailModule } from './modules/email/email.module';
 
 
 @Module({
@@ -24,6 +25,7 @@ import { roles } from './modules/role/roles';
       url: process.env.REDIS,
     }),
     AccessControlModule.forRoles(roles),
+    EmailModule,
     AuthModule,
   ],
   controllers: [],
