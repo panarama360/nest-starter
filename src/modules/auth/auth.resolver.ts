@@ -28,10 +28,10 @@ export class AuthResolver{
         return this.authService.emailConfirmation(token);
     }
 
-    // @Mutation(of => String)
-    // repeatEmailConfirmation(@Args('token') email: string){
-    //     return this.authService.emailConfirmation(token);
-    // }
+    @Mutation(of => String)
+    repeatEmailConfirmation(@Args('email') email: string){
+        return this.authService.repeatEmailConfirmation(email);
+    }
 
     @UseGuards(AuthGuard)
     @Query(returns => User)
